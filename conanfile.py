@@ -8,10 +8,10 @@ class WebsocketPPConan(ConanFile):
     license = "https://github.com/zaphoyd/websocketpp/blob/master/COPYING"
     requires =  "OpenSSL/1.0.2l@conan/stable", \
             "zlib/1.2.8@conan/stable", \
-            "Boost.Random/1.64.0@bincrafters/testing", \
-            "Boost.System/1.64.0@bincrafters/testing", \
-            "Boost.Thread/1.64.0@bincrafters/testing", \
-            "Boost.Asio/1.64.0@bincrafters/testing", \
+            "Boost.Random/1.64.0@bincrafters/stable", \
+            "Boost.System/1.64.0@bincrafters/stable", \
+            "Boost.Thread/1.64.0@bincrafters/stable", \
+            "Boost.Asio/1.64.0@bincrafters/stable", \
                       
     def source(self):
         source_url = "https://github.com/zaphoyd/websocketpp"
