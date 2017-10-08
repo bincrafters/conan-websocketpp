@@ -47,4 +47,4 @@ This is a header only library, so nothing needs to be built.
     $ conan upload websocketpp/0.7.0@bincrafters/testing -r bincrafters
 
 ### License
-[Boost](LICENSE)
+[BSD](https://github.com/zaphoyd/websocketpp/blob/master/COPYING)
