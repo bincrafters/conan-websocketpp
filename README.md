@@ -2,7 +2,7 @@
 
 | Bintray | Appveyor | Travis | 
 |---------|-----------|--------|
-|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/Abseil%3Abincrafters/images/download.svg)](https://bintray.com/bincrafters/public-conan/Abseil%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/gpemh777oy9a3434?svg=true)](https://ci.appveyor.com/project/BinCrafters/conan-freetype)|[![Build Status](https://travis-ci.org/bincrafters/conan-glog.svg?branch=testing%2F0.3.5)](https://travis-ci.org/bincrafters/conan-glog)|
+|BINTRAY_BADGE_URL|APPVEYOR_BADGE_URL|TRAVIS_BADGE_URL|
 
 ## Conan.io Information
 
