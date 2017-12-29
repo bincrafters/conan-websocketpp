@@ -21,7 +21,7 @@ def get_module_url():
     return get_module_location() + "/" + get_module_name() + ".py"
 
 if __name__ == "__main__":
-    # tools.download(get_module_url(), get_module_filename(), overwrite=True)
+    tools.download(get_module_url(), get_module_filename(), overwrite=True)
     module = importlib.import_module(get_module_name())
     module.build()
     
