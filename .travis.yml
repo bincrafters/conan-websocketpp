@@ -3,12 +3,12 @@ linux: &linux
    sudo: required
    language: python
    python: "3.6"
-osx: &osx
-   os: osx
-   language: generic
+   services:
+     - docker
+     
 env:
-  - BINCRAFTERS_TEMPLATE="header-only"
-  
+  - CONAN_CLANG_VERSIONS=4.0 CONAN_DOCKER_IMAGE=lasote/conanclang40
+        
 install:
   - chmod +x .travis/install.sh
   - ./.travis/install.sh
