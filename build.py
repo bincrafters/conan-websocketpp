@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from conan.packager import ConanMultiPackager
 from conans import tools
 import importlib
 import os
@@ -30,5 +31,8 @@ if __name__ == "__main__":
     
     module = importlib.import_module(get_module_name())
     
-    module.build()
+    builder = module.get_builder(args)
+    
+    builder.run()
+
     
