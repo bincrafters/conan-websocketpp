@@ -11,14 +11,14 @@ class WebsocketPPConan(ConanFile):
     url = "https://github.com/bincrafters/conan-websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "BSD 3-Clause"
-    source_subfolder = "sources"
+    source_subfolder = "source_subfolder"
     requires =  (
         "OpenSSL/[>=1.0.2l]@conan/stable", 
         "zlib/[>=1.2.8]@conan/stable", 
-        "Boost.Random/[>=1.64.0]@bincrafters/stable", 
-        "Boost.System/[>=1.64.0]@bincrafters/stable", 
-        "Boost.Thread/[>=1.64.0]@bincrafters/stable", 
-        "Boost.Asio/[>=1.64.0]@bincrafters/stable"
+        "Boost.Random/1.64.0@bincrafters/stable", 
+        "Boost.System/1.64.0@bincrafters/stable", 
+        "Boost.Thread/1.64.0@bincrafters/stable", 
+        "Boost.Asio/1.64.0@bincrafters/stable"
     )
                       
     def source(self):
@@ -28,8 +28,9 @@ class WebsocketPPConan(ConanFile):
         os.rename(archive_name, self.source_subfolder)
 
     def package(self):
-        include_dir = os.path.join(self.source_subfolder, "websocketpp")
-        self.copy(pattern="*", dst="websocketpp", src=include_dir)
+        src_include_dir = os.path.join(self.source_subfolder, "websocketpp")
+        dst_include_dir = os.path.join("include", "websocketpp")
+        self.copy(pattern="*", dst=dst_include_dir, src=src_include_dir)
 
     def package_id(self):
         self.info.header_only()
