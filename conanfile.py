@@ -30,6 +30,7 @@ class WebsocketPPConan(ConanFile):
     def package(self):
         src_include_dir = os.path.join(self.source_subfolder, "websocketpp")
         dst_include_dir = os.path.join("include", "websocketpp")
+        self.copy(pattern="COPYING", dst="license")
         self.copy(pattern="*", dst=dst_include_dir, src=src_include_dir)
 
     def package_id(self):
