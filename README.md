@@ -2,7 +2,7 @@
 
 | Bintray | Appveyor | Travis | 
 |---------|-----------|--------|
-|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/websocketpp%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/websocketpp%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-websocketpp?svg=true)](https://ci.appveyor.com/project/BinCrafters/conan-websocketpp)|[![Build Status](https://travis-ci.org/bincrafters/conan-websocketpp.svg?branch=stable%2F0.7.0)](https://travis-ci.org/bincrafters/conan-websocketpp)|
+|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/websocketpp%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/websocketpp%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-websocketpp?svg=true)](https://ci.appveyor.com/project/BinCrafters/conan-websocketpp)|[![Build Status](https://travis-ci.org/bincrafters/conan-websocketpp.svg)](https://travis-ci.org/bincrafters/conan-websocketpp)|
 
 ## Conan.io Information
 
