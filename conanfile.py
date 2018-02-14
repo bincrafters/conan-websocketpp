@@ -12,13 +12,13 @@ class WebsocketPPConan(ConanFile):
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "BSD 3-Clause"
     source_subfolder = "source_subfolder"
-    requires =  (
-        "OpenSSL/[>=1.0.2l]@conan/stable", 
-        "zlib/[>=1.2.8]@conan/stable", 
-        "Boost.Random/1.64.0@bincrafters/stable", 
-        "Boost.System/1.64.0@bincrafters/stable", 
-        "Boost.Thread/1.64.0@bincrafters/stable", 
-        "Boost.Asio/1.64.0@bincrafters/stable"
+    requires = (
+        "OpenSSL/1.0.2l@conan/stable",
+        "zlib/1.2.11@conan/stable",
+        "boost_random/1.66.0@bincrafters/stable",
+        "boost_system/1.66.0@bincrafters/stable",
+        "boost_thread/1.66.0@bincrafters/stable",
+        "boost_asio/1.66.0@bincrafters/stable"
     )
                       
     def source(self):
