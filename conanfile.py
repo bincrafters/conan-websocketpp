@@ -15,14 +15,19 @@ class WebsocketPPConan(ConanFile):
     exports_sources = ["CMakeLists.txt"]
     generators = ['cmake']
     settings = "os", "arch", "compiler", "build_type"
+    options = {'asio': ['boost', 'standalone']}
+    default_options = "asio=boost"
 
     def requirements(self):
         self.requires.add('OpenSSL/1.0.2l@conan/stable')
         self.requires.add('zlib/1.2.11@conan/stable')
-        self.requires.add('boost_random/1.66.0@bincrafters/stable')
-        self.requires.add('boost_system/1.66.0@bincrafters/stable')
-        self.requires.add('boost_thread/1.66.0@bincrafters/stable')
-        self.requires.add('boost_asio/1.66.0@bincrafters/stable')
+        if self.options.asio == 'standalone':
+            self.requires.add('asio/1.11.0@bincrafters/stable')
+        else:
+            self.requires.add('boost_random/1.66.0@bincrafters/stable')
+            self.requires.add('boost_system/1.66.0@bincrafters/stable')
+            self.requires.add('boost_thread/1.66.0@bincrafters/stable')
+            self.requires.add('boost_asio/1.66.0@bincrafters/stable')
                       
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
@@ -43,6 +48,8 @@ class WebsocketPPConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.builddirs.append(os.path.join(self.package_folder, 'cmake'))
+        if self.options.asio == 'standalone':
+            self.cpp_info.defines.extend(['ASIO_STANDALONE', '_WEBSOCKETPP_CPP11_STL_'])
 
     def package_id(self):
         self.info.header_only()
