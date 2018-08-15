@@ -7,7 +7,7 @@ from conans import ConanFile, tools, CMake
 
 class WebsocketPPConan(ConanFile):
     name = "websocketpp"
-    version = "0.7.0"
+    version = "0.8.0"
     url = "https://github.com/bincrafters/conan-websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "BSD 3-Clause"
@@ -19,16 +19,16 @@ class WebsocketPPConan(ConanFile):
     default_options = "asio=boost"
 
     def requirements(self):
-        self.requires.add('OpenSSL/1.0.2l@conan/stable')
+        self.requires.add('OpenSSL/1.1.0g@conan/stable')
         self.requires.add('zlib/1.2.11@conan/stable')
         if self.options.asio == 'standalone':
-            self.requires.add('asio/1.11.0@bincrafters/stable')
+            self.requires.add('asio/1.12.0@bincrafters/stable')
         else:
             self.requires.add('boost_random/1.66.0@bincrafters/stable')
             self.requires.add('boost_system/1.66.0@bincrafters/stable')
             self.requires.add('boost_thread/1.66.0@bincrafters/stable')
             self.requires.add('boost_asio/1.66.0@bincrafters/stable')
-                      
+
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
         source_url = "https://github.com/zaphoyd/websocketpp"
