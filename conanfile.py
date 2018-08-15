@@ -7,7 +7,7 @@ from conans import ConanFile, tools, CMake
 
 class WebsocketPPConan(ConanFile):
     name = "websocketpp"
-    version = "0.8.0"
+    version = "0.8.1"
     url = "https://github.com/bincrafters/conan-websocketpp"
     homepage = "https://github.com/zaphoyd/websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
@@ -46,6 +46,9 @@ class WebsocketPPConan(ConanFile):
 
     def package(self):
         self.copy(pattern="COPYING", dst="license", src=self.source_subfolder)
+        # We have to copy the headers manually, since the current install() step
+        # in the 0.8.1 release doesn't work with the cmake wrapper.
+        self.copy(pattern="*.hpp", dst="include/websocketpp", src=self.source_subfolder + '/websocketpp')
 
     def package_info(self):
         self.cpp_info.builddirs.append(os.path.join(self.package_folder, 'cmake'))
