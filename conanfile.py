@@ -9,8 +9,10 @@ class WebsocketPPConan(ConanFile):
     name = "websocketpp"
     version = "0.8.0"
     url = "https://github.com/bincrafters/conan-websocketpp"
+    homepage = "https://github.com/zaphoyd/websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "BSD 3-Clause"
+    author = "Bincrafters <bincrafters@gmail.com>"
     source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
     generators = ['cmake']
@@ -31,8 +33,7 @@ class WebsocketPPConan(ConanFile):
 
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
-        source_url = "https://github.com/zaphoyd/websocketpp"
-        tools.get("{0}/archive/{1}.tar.gz".format(source_url, self.version))
+        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version))
         os.rename(archive_name, self.source_subfolder)
 
     def build(self):
