@@ -7,11 +7,12 @@ from conans import ConanFile, tools, CMake
 
 class WebsocketPPConan(ConanFile):
     name = "websocketpp"
+    topics = ("conan", "websocketpp", "websocket", "network", "web", "rfc6455")
     version = "0.8.1"
     url = "https://github.com/bincrafters/conan-websocketpp"
     homepage = "https://github.com/zaphoyd/websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
-    license = "BSD 3-Clause"
+    license = "	BSD-3-Clause"
     author = "Bincrafters <bincrafters@gmail.com>"
     _source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
@@ -33,7 +34,8 @@ class WebsocketPPConan(ConanFile):
 
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
-        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version))
+        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version),
+                  sha256="178899de48c02853b55b1ea8681599641cedcdfce59e56beaff3dd0874bf0286")
         os.rename(archive_name, self._source_subfolder)
 
     def build(self):
