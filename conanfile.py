@@ -27,10 +27,8 @@ class WebsocketPPConan(ConanFile):
         if self.options.asio == 'standalone':
             self.requires.add('asio/1.12.0@bincrafters/stable')
         else:
-            self.requires.add('boost_random/1.66.0@bincrafters/stable')
-            self.requires.add('boost_system/1.66.0@bincrafters/stable')
-            self.requires.add('boost_thread/1.66.0@bincrafters/stable')
-            self.requires.add('boost_asio/1.66.0@bincrafters/stable')
+            # 1.70 doesn't work: https://github.com/zaphoyd/websocketpp/issues/794
+            self.requires.add('boost/1.69.0@conan/stable')
 
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
