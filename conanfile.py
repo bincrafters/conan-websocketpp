@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import os
 from conans import ConanFile, tools, CMake
 
@@ -22,8 +19,8 @@ class WebsocketPPConan(ConanFile):
     default_options = {'asio': 'boost'}
 
     def requirements(self):
-        self.requires.add('OpenSSL/1.1.1c@conan/stable')
-        self.requires.add('zlib/1.2.11@conan/stable')
+        self.requires.add('openssl/1.1.1d')
+        self.requires.add('zlib/1.2.11')
         if self.options.asio == 'standalone':
             self.requires.add('asio/1.12.0@bincrafters/stable')
         else:
