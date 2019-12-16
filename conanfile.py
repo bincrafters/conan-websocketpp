@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import os
 from conans import ConanFile, tools, CMake
 
@@ -13,7 +10,6 @@ class WebsocketPPConan(ConanFile):
     homepage = "https://github.com/zaphoyd/websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "	BSD-3-Clause"
-    author = "Bincrafters <bincrafters@gmail.com>"
     _source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
     generators = ["cmake"]
@@ -22,10 +18,10 @@ class WebsocketPPConan(ConanFile):
     default_options = {'asio': 'boost'}
 
     def requirements(self):
-        self.requires.add('OpenSSL/1.1.1c@conan/stable')
-        self.requires.add('zlib/1.2.11@conan/stable')
+        self.requires.add('openssl/1.1.1d')
+        self.requires.add('zlib/1.2.11')
         if self.options.asio == 'standalone':
-            self.requires.add('asio/1.12.0@bincrafters/stable')
+            self.requires.add('asio/1.13.0')
         else:
             # 1.70 doesn't work: https://github.com/zaphoyd/websocketpp/issues/794
             self.requires.add('boost/1.69.0@conan/stable')
