@@ -32,6 +32,7 @@ class WebsocketPPConan(ConanFile):
         os.rename(archive_name, self._source_subfolder)
 
         # Patch for boost 1.70+ support
+        # TODO: will not be necessary anymore with websocket release > 0.8.1
         for patch in ["websocket_boost_support_1_7_x.patch"]:
             tools.patch(patch_file=os.path.join("patches", patch),
                         base_path=os.path.join(self.source_folder, self._source_subfolder))
