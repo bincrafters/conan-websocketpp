@@ -11,7 +11,7 @@ class WebsocketPPConan(ConanFile):
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "	BSD-3-Clause"
     _source_subfolder = "source_subfolder"
-    exports_sources = ["CMakeLists.txt"]
+    exports_sources = ["CMakeLists.txt", 'patches/*']
     generators = ["cmake"]
     settings = "os", "arch", "compiler", "build_type"
     options = {'asio': ['boost', 'standalone']}
@@ -23,14 +23,18 @@ class WebsocketPPConan(ConanFile):
         if self.options.asio == 'standalone':
             self.requires.add('asio/1.13.0')
         else:
-            # 1.70 doesn't work: https://github.com/zaphoyd/websocketpp/issues/794
-            self.requires.add('boost/1.69.0@conan/stable')
+            self.requires.add('boost/1.71.0')
 
     def source(self):
         archive_name = "{0}-{1}".format(self.name, self.version)
         tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version),
                   sha256="178899de48c02853b55b1ea8681599641cedcdfce59e56beaff3dd0874bf0286")
         os.rename(archive_name, self._source_subfolder)
+
+        # Patch for boost 1.70+ support
+        for patch in ["websocket_boost_support_1_7_x.patch"]:
+            tools.patch(patch_file=os.path.join("patches", patch),
+                        base_path=os.path.join(self.source_folder, self._source_subfolder))
 
     def build(self):
         cmake = CMake(self)
