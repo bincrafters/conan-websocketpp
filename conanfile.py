@@ -5,7 +5,6 @@ from conans import ConanFile, tools, CMake
 class WebsocketPPConan(ConanFile):
     name = "websocketpp"
     topics = ("conan", "websocketpp", "websocket", "network", "web", "rfc6455")
-    version = "0.8.1"
     url = "https://github.com/bincrafters/conan-websocketpp"
     homepage = "https://github.com/zaphoyd/websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
@@ -26,10 +25,9 @@ class WebsocketPPConan(ConanFile):
             self.requires.add('boost/1.71.0')
 
     def source(self):
-        archive_name = "{0}-{1}".format(self.name, self.version)
-        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version),
-                  sha256="178899de48c02853b55b1ea8681599641cedcdfce59e56beaff3dd0874bf0286")
-        os.rename(archive_name, self._source_subfolder)
+        tools.get(**self.conan_data["sources"][self.version])
+        extracted_dir = self.name + "-" + self.version
+        os.rename(extracted_dir, self._source_subfolder)
 
         # Patch for boost 1.70+ support
         # TODO: will not be necessary anymore with websocket release > 0.8.1
